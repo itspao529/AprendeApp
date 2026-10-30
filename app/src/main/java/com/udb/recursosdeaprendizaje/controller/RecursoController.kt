@@ -59,6 +59,40 @@ class RecursoController {
         api.eliminarRecurso(id)
     }
 
+    // ---- Calificación (PUT al backend) ----
+    // previa = estrellas que este usuario ya había dado a este recurso (o null).
+    // Primera vez: suma las estrellas y aumenta la cantidad de votos.
+    // Cambio de voto: reemplaza el voto anterior sin aumentar la cantidad.
+    suspend fun calificar(id: String, estrellas: Int, previa: Int?): RecursosResult {
+        return try {
+            // Leemos el valor más reciente del servidor para no pisar votos de otros
+            val lectura = api.obtenerRecurso(id)
+            val actual = lectura.body()
+            if (!lectura.isSuccessful || actual == null) {
+                return RecursosResult.Error(R.string.error_servidor)
+            }
+            val nuevo = if (previa == null) {
+                actual.copy(
+                    ratingSuma = actual.ratingSuma + estrellas,
+                    ratingCantidad = actual.ratingCantidad + 1
+                )
+            } else {
+                actual.copy(ratingSuma = actual.ratingSuma - previa + estrellas)
+            }
+            val respuesta = api.actualizarRecurso(id, nuevo)
+            if (respuesta.isSuccessful) {
+                val guardado = respuesta.body() ?: nuevo
+                // Actualizamos también la copia local para que la tarjeta se refresque
+                todos = todos.map { if (it.id == id) guardado else it }
+                RecursosResult.Exito
+            } else {
+                RecursosResult.Error(R.string.error_servidor)
+            }
+        } catch (e: Exception) {
+            RecursosResult.Error(R.string.error_red)
+        }
+    }
+
     private suspend fun <T> ejecutar(llamada: suspend () -> Response<T>): RecursosResult {
         return try {
             if (llamada().isSuccessful) RecursosResult.Exito
@@ -68,15 +102,22 @@ class RecursoController {
         }
     }
 
-    fun filtrar(consulta: String, tipo: String?, ascendente: Boolean): List<Recurso> {
+    // soloIds: si no es null, solo se muestran recursos cuyo id esté en ese conjunto (favoritos)
+    fun filtrar(
+        consulta: String,
+        tipo: String?,
+        ascendente: Boolean,
+        soloIds: Set<String>? = null
+    ): List<Recurso> {
         val q = normalizar(consulta)
         val filtrados = todos.filter { r ->
             val cumpleTipo = tipo == null || normalizar(r.tipo) == tipo
+            val cumpleFavorito = soloIds == null || (r.id != null && r.id in soloIds)
             val cumpleBusqueda = q.isEmpty() ||
                 r.id == q ||
                 normalizar(r.titulo).contains(q) ||
                 normalizar(r.tipo).contains(q)
-            cumpleTipo && cumpleBusqueda
+            cumpleTipo && cumpleFavorito && cumpleBusqueda
         }
         val porTitulo = compareBy<Recurso> { normalizar(it.titulo) }
         return if (ascendente) filtrados.sortedWith(porTitulo)

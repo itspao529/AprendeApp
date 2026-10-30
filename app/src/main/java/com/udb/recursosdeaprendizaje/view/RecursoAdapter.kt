@@ -2,6 +2,7 @@ package com.udb.recursosdeaprendizaje.view
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -11,6 +12,10 @@ import com.udb.recursosdeaprendizaje.databinding.ItemRecursoBinding
 import com.udb.recursosdeaprendizaje.model.Recurso
 
 class RecursoAdapter(
+    private val esEstudiante: Boolean,
+    private val esFavorito: (Recurso) -> Boolean,
+    private val onFavorito: (Recurso) -> Boolean,
+    private val onCalificar: (Recurso) -> Unit,
     private val onAbrirEnlace: (Recurso) -> Unit
 ) : ListAdapter<Recurso, RecursoAdapter.VH>(Diff) {
 
@@ -18,6 +23,9 @@ class RecursoAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH =
         VH(ItemRecursoBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+
+    private fun iconoFavorito(activo: Boolean) =
+        if (activo) android.R.drawable.btn_star_big_on else android.R.drawable.btn_star_big_off
 
     override fun onBindViewHolder(holder: VH, position: Int) {
         val r = getItem(position)
@@ -47,6 +55,14 @@ class RecursoAdapter(
                 .centerCrop()
                 .into(imgRecurso)
 
+            // Solo el Estudiante marca favoritos y califica
+            btnFavorito.isVisible = esEstudiante
+            btnCalificar.isVisible = esEstudiante
+            btnFavorito.setImageResource(iconoFavorito(esFavorito(r)))
+            btnFavorito.setOnClickListener {
+                btnFavorito.setImageResource(iconoFavorito(onFavorito(r)))
+            }
+            btnCalificar.setOnClickListener { onCalificar(r) }
             btnEnlace.setOnClickListener { onAbrirEnlace(r) }
         }
     }

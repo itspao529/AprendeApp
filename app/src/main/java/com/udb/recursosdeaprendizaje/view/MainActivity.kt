@@ -15,11 +15,14 @@ import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.udb.recursosdeaprendizaje.R
+import com.udb.recursosdeaprendizaje.controller.PreferenciasController
 import com.udb.recursosdeaprendizaje.controller.RecursoController
 import com.udb.recursosdeaprendizaje.controller.RecursosResult
 import com.udb.recursosdeaprendizaje.databinding.ActivityMainBinding
+import com.udb.recursosdeaprendizaje.databinding.DialogCalificarBinding
 import com.udb.recursosdeaprendizaje.model.Recurso
 import com.udb.recursosdeaprendizaje.utils.SessionManager
 import kotlinx.coroutines.launch
@@ -28,6 +31,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var session: SessionManager
+    private lateinit var preferencias: PreferenciasController
     private lateinit var adapter: RecursoAdapter
     private val controller = RecursoController()
 
@@ -37,6 +41,7 @@ class MainActivity : AppCompatActivity() {
     ) { cargarRecursos() }
 
     private var tipoSeleccionado: String? = null
+    private var soloFavoritos = false
     private var ascendente = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,6 +53,7 @@ class MainActivity : AppCompatActivity() {
             irALogin()
             return
         }
+        preferencias = PreferenciasController(this, session.obtenerId())
 
         enableEdgeToEdge()
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -90,17 +96,28 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun configurarLista() {
-        adapter = RecursoAdapter { recurso -> abrirEnlace(recurso) }
+        val esEstudiante = !session.esDocente()
+        adapter = RecursoAdapter(
+            esEstudiante = esEstudiante,
+            esFavorito = { preferencias.esFavorito(it.id.orEmpty()) },
+            onFavorito = { alternarFavorito(it) },
+            onCalificar = { mostrarDialogoCalificar(it) },
+            onAbrirEnlace = { abrirEnlace(it) }
+        )
         binding.rvRecursos.layoutManager = LinearLayoutManager(this)
         binding.rvRecursos.adapter = adapter
         binding.btnReintentar.setOnClickListener { cargarRecursos() }
+        // El chip de Favoritos solo lo ve el Estudiante
+        binding.chipFavoritos.isVisible = esEstudiante
     }
 
     private fun configurarBusquedaYFiltros() {
         binding.etBuscar.doOnTextChanged { _, _, _, _ -> aplicarFiltros() }
 
         binding.chipGroup.setOnCheckedStateChangeListener { _, ids ->
-            tipoSeleccionado = when (ids.firstOrNull()) {
+            val elegido = ids.firstOrNull()
+            soloFavoritos = elegido == R.id.chipFavoritos
+            tipoSeleccionado = when (elegido) {
                 R.id.chipLibro -> "libro"
                 R.id.chipVideo -> "video"
                 R.id.chipArticulo -> "articulo"
@@ -140,12 +157,75 @@ class MainActivity : AppCompatActivity() {
         val lista = controller.filtrar(
             binding.etBuscar.text.toString(),
             tipoSeleccionado,
-            ascendente
+            ascendente,
+            if (soloFavoritos) preferencias.favoritos() else null
         )
         adapter.submitList(lista)
         binding.tvContador.text = getString(R.string.lista_contador, lista.size)
-        if (lista.isEmpty()) mostrarMensaje(R.string.lista_vacia, conReintento = false)
-        else binding.layoutMensaje.isVisible = false
+        if (lista.isEmpty()) {
+            mostrarMensaje(
+                if (soloFavoritos) R.string.lista_vacia_favoritos else R.string.lista_vacia,
+                conReintento = false
+            )
+        } else {
+            binding.layoutMensaje.isVisible = false
+        }
+    }
+
+    // ---- Favoritos ----
+    private fun alternarFavorito(recurso: Recurso): Boolean {
+        val ahora = preferencias.alternarFavorito(recurso.id.orEmpty())
+        Snackbar.make(
+            binding.root,
+            if (ahora) R.string.fav_agregado else R.string.fav_quitado,
+            Snackbar.LENGTH_SHORT
+        ).show()
+        // Si estamos viendo solo favoritos, la tarjeta quitada debe desaparecer
+        if (soloFavoritos) aplicarFiltros()
+        return ahora
+    }
+
+    // ---- Calificación ----
+    private fun mostrarDialogoCalificar(recurso: Recurso) {
+        val id = recurso.id ?: return
+        val dialogo = DialogCalificarBinding.inflate(layoutInflater)
+        val previa = preferencias.calificacionPrevia(id)
+        dialogo.ratingBar.rating = (previa ?: 0).toFloat()
+
+        MaterialAlertDialogBuilder(this)
+            .setTitle(getString(R.string.calificar_titulo, recurso.titulo))
+            .setView(dialogo.root)
+            .setNegativeButton(R.string.cancelar, null)
+            .setPositiveButton(R.string.calificar_enviar) { _, _ ->
+                val estrellas = dialogo.ratingBar.rating.toInt()
+                if (estrellas < 1) {
+                    Snackbar.make(binding.root, R.string.calificar_sin_estrellas, Snackbar.LENGTH_LONG).show()
+                } else {
+                    enviarCalificacion(id, estrellas, previa)
+                }
+            }
+            .show()
+    }
+
+    private fun enviarCalificacion(id: String, estrellas: Int, previa: Int?) {
+        binding.progress.isVisible = true
+        lifecycleScope.launch {
+            when (val resultado = controller.calificar(id, estrellas, previa)) {
+                is RecursosResult.Exito -> {
+                    preferencias.guardarCalificacion(id, estrellas)
+                    binding.progress.isVisible = false
+                    aplicarFiltros()
+                    val mensaje =
+                        if (previa == null) R.string.calificacion_enviada
+                        else R.string.calificacion_actualizada
+                    Snackbar.make(binding.root, mensaje, Snackbar.LENGTH_SHORT).show()
+                }
+                is RecursosResult.Error -> {
+                    binding.progress.isVisible = false
+                    Snackbar.make(binding.root, resultado.mensaje, Snackbar.LENGTH_LONG).show()
+                }
+            }
+        }
     }
 
     private fun mostrarMensaje(@StringRes mensaje: Int, conReintento: Boolean) {

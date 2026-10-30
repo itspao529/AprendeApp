@@ -97,4 +97,17 @@
     <string name="eliminar_mensaje">¿Seguro que quieres eliminar “%1$s”? Esta acción no se puede deshacer.</string>
     <string name="eliminar_confirmar">Eliminar</string>
     <string name="cancelar">Cancelar</string>
+
+    <!-- Favoritos y calificación -->
+    <string name="filtro_favoritos">Favoritos</string>
+    <string name="fav_agregado">Agregado a favoritos</string>
+    <string name="fav_quitado">Quitado de favoritos</string>
+    <string name="fav_descripcion">Marcar como favorito</string>
+    <string name="lista_vacia_favoritos">Aún no tienes recursos favoritos</string>
+    <string name="item_calificar">Calificar</string>
+    <string name="calificar_titulo">Calificar: %1$s</string>
+    <string name="calificar_enviar">Enviar</string>
+    <string name="calificar_sin_estrellas">Elige al menos 1 estrella</string>
+    <string name="calificacion_enviada">¡Gracias por tu calificación!</string>
+    <string name="calificacion_actualizada">Calificación actualizada</string>
 </resources>

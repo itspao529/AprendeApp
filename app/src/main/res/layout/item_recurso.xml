@@ -68,11 +68,34 @@
                     android:layout_weight="1"
                     android:textAppearance="?attr/textAppearanceTitleSmall" />
 
+                <ImageButton
+                    android:id="@+id/btnFavorito"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/fav_descripcion"
+                    android:src="@android:drawable/btn_star_big_off" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnCalificar"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/item_calificar" />
+
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnEnlace"
                     style="@style/Widget.Material3.Button.TextButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:text="@string/item_abrir_enlace" />
             </LinearLayout>
         </LinearLayout>
