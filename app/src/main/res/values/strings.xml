@@ -50,4 +50,26 @@
     <string name="main_hola">Hola, %1$s</string>
     <string name="main_rol">Rol: %1$s</string>
     <string name="main_placeholder">Aquí aparecerá la lista de recursos</string>
+
+    <!-- Lista de recursos -->
+    <string name="main_subtitulo">Hola, %1$s · %2$s</string>
+    <string name="lista_buscar">Buscar por ID, título o tipo</string>
+    <string name="lista_contador">%1$d recursos</string>
+    <string name="lista_vacia">No se encontraron recursos</string>
+    <string name="lista_reintentar">Reintentar</string>
+    <string name="filtro_todos">Todos</string>
+    <string name="tipo_libro">Libro</string>
+    <string name="tipo_video">Video</string>
+    <string name="tipo_articulo">Artículo</string>
+    <string name="orden_az">Título A-Z</string>
+    <string name="orden_za">Título Z-A</string>
+
+    <!-- Tarjeta de recurso -->
+    <string name="item_tipo">Tipo: %1$s</string>
+    <string name="item_id">ID: %1$s</string>
+    <string name="item_promedio">★ %1$.1f (%2$d)</string>
+    <string name="item_sin_calificar">Sin calificaciones</string>
+    <string name="item_abrir_enlace">Abrir enlace</string>
+    <string name="item_imagen_descripcion">Imagen del recurso</string>
+    <string name="error_abrir_enlace">No se pudo abrir el enlace</string>
 </resources>
