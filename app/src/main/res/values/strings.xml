@@ -45,4 +45,9 @@
     <string name="menu_favoritos">Favoritos</string>
     <string name="menu_administrar">Administrar recursos</string>
     <string name="sesion_cerrada">Sesión cerrada</string>
+
+    <!-- Pantalla principal (temporal) -->
+    <string name="main_hola">Hola, %1$s</string>
+    <string name="main_rol">Rol: %1$s</string>
+    <string name="main_placeholder">Aquí aparecerá la lista de recursos</string>
 </resources>
