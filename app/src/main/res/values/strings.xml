@@ -1,3 +1,48 @@
 <resources>
-    <string name="app_name">Recursos de aprendizaje</string>
+    <string name="app_name">AprendeApp</string>
+    <string name="welcome_message">¡Bienvenido a AprendeApp!</string>
+
+    <!-- Login -->
+    <string name="login_titulo">Iniciar sesión</string>
+    <string name="login_boton">Entrar</string>
+    <string name="login_ir_registro">¿No tienes cuenta? Regístrate</string>
+    <string name="login_exitoso">Sesión iniciada correctamente</string>
+    <string name="login_credenciales_invalidas">Correo o contraseña incorrectos</string>
+
+    <!-- Registro -->
+    <string name="registro_titulo">Crear cuenta</string>
+    <string name="registro_boton">Registrarme</string>
+    <string name="registro_ir_login">¿Ya tienes cuenta? Inicia sesión</string>
+    <string name="registro_exitoso">Cuenta creada. Ya puedes iniciar sesión</string>
+    <string name="registro_email_existente">Ya existe una cuenta con ese correo</string>
+
+    <!-- Campos -->
+    <string name="campo_nombre">Nombre completo</string>
+    <string name="campo_email">Correo electrónico</string>
+    <string name="campo_password">Contraseña</string>
+    <string name="campo_confirmar_password">Confirmar contraseña</string>
+    <string name="campo_rol">Rol</string>
+    <string name="rol_estudiante">Estudiante</string>
+    <string name="rol_docente">Docente</string>
+
+    <!-- Validaciones -->
+    <string name="error_nombre_vacio">Ingresa tu nombre</string>
+    <string name="error_email_invalido">Ingresa un correo válido</string>
+    <string name="error_password_vacia">Ingresa tu contraseña</string>
+    <string name="error_passwords_no_coinciden">Las contraseñas no coinciden</string>
+    <string name="error_password_longitud">Mínimo 12 caracteres</string>
+    <string name="error_password_mayuscula">Al menos una letra mayúscula</string>
+    <string name="error_password_minuscula">Al menos una letra minúscula</string>
+    <string name="error_password_numero">Al menos un número</string>
+    <string name="error_password_especial" formatted="false">Al menos un carácter especial (!@#$%^&amp;*)</string>
+
+    <!-- Errores generales -->
+    <string name="error_red">Sin conexión o el servidor no responde. Intenta de nuevo</string>
+    <string name="error_servidor">Error del servidor. Intenta más tarde</string>
+
+    <!-- Menú y sesión -->
+    <string name="menu_cerrar_sesion">Cerrar sesión</string>
+    <string name="menu_favoritos">Favoritos</string>
+    <string name="menu_administrar">Administrar recursos</string>
+    <string name="sesion_cerrada">Sesión cerrada</string>
 </resources>
