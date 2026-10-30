@@ -2,6 +2,16 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="primario">#1F4E9C</color>
-    <color name="primario_noche">#A9C7FF</color>
+
+    <!-- Paleta: rosa empolvado y lila -->
+    <color name="rosa">#B5446E</color>
+    <color name="rosa_claro">#FFD9E3</color>
+    <color name="rosa_fondo">#FFF8F9</color>
+    <color name="rosa_superficie">#FDECF0</color>
+    <color name="lila">#7E5A9B</color>
+    <color name="lila_claro">#EBDDFF</color>
+
+    <!-- Degradado del encabezado (se usa igual en modo claro y oscuro) -->
+    <color name="degradado_inicio">#B5446E</color>
+    <color name="degradado_fin">#7E5A9B</color>
 </resources>

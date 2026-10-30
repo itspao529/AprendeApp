@@ -10,7 +10,9 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        app:title="@string/app_name" />
+        app:title="@string/app_name"
+        app:titleTextColor="?attr/colorPrimary"
+        app:subtitleTextColor="?attr/colorSecondary" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilBuscar"

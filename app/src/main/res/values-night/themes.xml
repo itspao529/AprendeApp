@@ -1,5 +1,20 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <style name="Base.Theme.RecursosDeAprendizaje" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/primario_noche</item>
+        <item name="colorPrimary">#FFB1C8</item>
+        <item name="colorOnPrimary">#5E1133</item>
+        <item name="colorPrimaryContainer">#7B2949</item>
+        <item name="colorOnPrimaryContainer">#FFD9E3</item>
+        <item name="colorSecondary">#D8BBF5</item>
+        <item name="colorOnSecondary">#3E2358</item>
+        <item name="colorSecondaryContainer">#563A70</item>
+        <item name="colorOnSecondaryContainer">#EBDDFF</item>
+        <item name="android:colorBackground">#1F1A1C</item>
+        <item name="colorSurface">#1F1A1C</item>
+        <item name="colorSurfaceContainerLow">#2A2326</item>
+        <item name="colorSurfaceContainer">#2E2729</item>
+        <item name="colorSurfaceContainerHigh">#393134</item>
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.App.Small</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.App.Medium</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.App.Large</item>
     </style>
 </resources>

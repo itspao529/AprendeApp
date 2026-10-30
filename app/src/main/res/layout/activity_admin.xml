@@ -12,7 +12,9 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         app:navigationIcon="?attr/homeAsUpIndicator"
-        app:title="@string/menu_administrar" />
+        app:title="@string/menu_administrar"
+        app:titleTextColor="?attr/colorPrimary"
+        app:subtitleTextColor="?attr/colorSecondary" />
 
     <FrameLayout
         android:layout_width="match_parent"

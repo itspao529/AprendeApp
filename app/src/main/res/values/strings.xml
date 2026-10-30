@@ -110,4 +110,6 @@
     <string name="calificar_sin_estrellas">Elige al menos 1 estrella</string>
     <string name="calificacion_enviada">¡Gracias por tu calificación!</string>
     <string name="calificacion_actualizada">Calificación actualizada</string>
+
+    <string name="login_subtitulo">Aprende a tu ritmo ✿</string>
 </resources>
