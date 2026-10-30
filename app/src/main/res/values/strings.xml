@@ -72,4 +72,29 @@
     <string name="item_abrir_enlace">Abrir enlace</string>
     <string name="item_imagen_descripcion">Imagen del recurso</string>
     <string name="error_abrir_enlace">No se pudo abrir el enlace</string>
+
+    <!-- Administración (Docente) -->
+    <string name="admin_agregar">Agregar recurso</string>
+    <string name="admin_vacio">Aún no hay recursos. Agrega el primero</string>
+    <string name="admin_sin_permiso">Solo los docentes pueden administrar recursos</string>
+    <string name="item_editar">Editar</string>
+    <string name="item_eliminar">Eliminar</string>
+    <string name="form_titulo_nuevo">Nuevo recurso</string>
+    <string name="form_titulo_editar">Editar recurso</string>
+    <string name="form_guardar">Guardar</string>
+    <string name="campo_titulo">Título</string>
+    <string name="campo_descripcion">Descripción</string>
+    <string name="campo_tipo">Tipo de recurso</string>
+    <string name="campo_enlace">Enlace (URL)</string>
+    <string name="campo_imagen">Imagen (URL)</string>
+    <string name="error_titulo">Ingresa un título de al menos 3 caracteres</string>
+    <string name="error_descripcion">Ingresa una descripción de al menos 10 caracteres</string>
+    <string name="error_url">Ingresa una URL válida que empiece con http:// o https://</string>
+    <string name="recurso_creado">Recurso creado correctamente</string>
+    <string name="recurso_actualizado">Recurso actualizado correctamente</string>
+    <string name="recurso_eliminado">Recurso eliminado</string>
+    <string name="eliminar_titulo">Eliminar recurso</string>
+    <string name="eliminar_mensaje">¿Seguro que quieres eliminar “%1$s”? Esta acción no se puede deshacer.</string>
+    <string name="eliminar_confirmar">Eliminar</string>
+    <string name="cancelar">Cancelar</string>
 </resources>

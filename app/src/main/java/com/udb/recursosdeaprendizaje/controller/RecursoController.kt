@@ -4,6 +4,7 @@ import com.udb.recursosdeaprendizaje.R
 import com.udb.recursosdeaprendizaje.model.Recurso
 import com.udb.recursosdeaprendizaje.network.RetrofitClient
 import java.text.Normalizer
+import retrofit2.Response
 
 sealed class RecursosResult {
     object Exito : RecursosResult()
@@ -32,6 +33,36 @@ class RecursoController {
                 }
                 else -> RecursosResult.Error(R.string.error_servidor)
             }
+        } catch (e: Exception) {
+            RecursosResult.Error(R.string.error_red)
+        }
+    }
+
+    // ---- CRUD del Docente (POST, PUT, DELETE) ----
+
+    suspend fun crear(recurso: Recurso): RecursosResult = ejecutar {
+        // id en null: el servidor asigna el id. Un recurso nuevo empieza sin calificaciones.
+        api.crearRecurso(recurso.copy(id = null, ratingSuma = 0, ratingCantidad = 0))
+    }
+
+    suspend fun actualizar(recurso: Recurso): RecursosResult = ejecutar {
+        val id = recurso.id.orEmpty()
+        // Releemos las calificaciones actuales para no pisar lo que votaron los estudiantes
+        val actual = api.obtenerRecurso(id).body()
+        val nuevo = if (actual != null) {
+            recurso.copy(ratingSuma = actual.ratingSuma, ratingCantidad = actual.ratingCantidad)
+        } else recurso
+        api.actualizarRecurso(id, nuevo)
+    }
+
+    suspend fun eliminar(id: String): RecursosResult = ejecutar {
+        api.eliminarRecurso(id)
+    }
+
+    private suspend fun <T> ejecutar(llamada: suspend () -> Response<T>): RecursosResult {
+        return try {
+            if (llamada().isSuccessful) RecursosResult.Exito
+            else RecursosResult.Error(R.string.error_servidor)
         } catch (e: Exception) {
             RecursosResult.Error(R.string.error_red)
         }
