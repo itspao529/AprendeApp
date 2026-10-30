@@ -6,6 +6,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -29,6 +30,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var session: SessionManager
     private lateinit var adapter: RecursoAdapter
     private val controller = RecursoController()
+
+    // Al volver de la pantalla del Docente se recarga la lista
+    private val adminLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { cargarRecursos() }
 
     private var tipoSeleccionado: String? = null
     private var ascendente = true
@@ -64,12 +70,18 @@ class MainActivity : AppCompatActivity() {
             getString(R.string.main_subtitulo, session.obtenerNombre(), getString(nombreRol))
 
         binding.toolbar.inflateMenu(R.menu.menu_main)
+        // "Administrar recursos" solo existe para el Docente
+        binding.toolbar.menu.findItem(R.id.action_administrar).isVisible = session.esDocente()
         binding.toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.action_cerrar_sesion -> {
                     session.cerrarSesion()
                     Toast.makeText(this, R.string.sesion_cerrada, Toast.LENGTH_SHORT).show()
                     irALogin()
+                    true
+                }
+                R.id.action_administrar -> {
+                    adminLauncher.launch(Intent(this, AdminActivity::class.java))
                     true
                 }
                 else -> false
