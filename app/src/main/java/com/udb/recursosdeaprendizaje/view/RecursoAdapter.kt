@@ -25,7 +25,7 @@ class RecursoAdapter(
         VH(ItemRecursoBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
     private fun iconoFavorito(activo: Boolean) =
-        if (activo) android.R.drawable.btn_star_big_on else android.R.drawable.btn_star_big_off
+        if (activo) R.drawable.ic_corazon_on else R.drawable.ic_corazon_off
 
     override fun onBindViewHolder(holder: VH, position: Int) {
         val r = getItem(position)

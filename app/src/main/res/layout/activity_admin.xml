@@ -8,13 +8,15 @@
     android:orientation="vertical">
 
     <com.google.android.material.appbar.MaterialToolbar
+        android:background="@drawable/bg_toolbar"
+        android:theme="@style/ThemeOverlay.App.Toolbar"
+        app:titleTextColor="@color/white"
+        app:subtitleTextColor="@color/white"
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="72dp"
         app:navigationIcon="?attr/homeAsUpIndicator"
-        app:title="@string/menu_administrar"
-        app:titleTextColor="?attr/colorPrimary"
-        app:subtitleTextColor="?attr/colorSecondary" />
+        app:title="@string/menu_administrar" />
 
     <FrameLayout
         android:layout_width="match_parent"

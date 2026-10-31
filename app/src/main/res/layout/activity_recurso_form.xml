@@ -7,13 +7,15 @@
     android:orientation="vertical">
 
     <com.google.android.material.appbar.MaterialToolbar
+        android:background="@drawable/bg_toolbar"
+        android:theme="@style/ThemeOverlay.App.Toolbar"
+        app:titleTextColor="@color/white"
+        app:subtitleTextColor="@color/white"
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="72dp"
         app:navigationIcon="?attr/homeAsUpIndicator"
-        app:title="@string/form_titulo_nuevo"
-        app:titleTextColor="?attr/colorPrimary"
-        app:subtitleTextColor="?attr/colorSecondary" />
+        app:title="@string/form_titulo_nuevo" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -29,7 +31,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilTitulo"
-                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                style="@style/Widget.App.TextInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/campo_titulo">
@@ -43,7 +45,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilDescripcion"
-                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                style="@style/Widget.App.TextInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
@@ -74,7 +76,7 @@
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chipFormLibro"
-                    style="@style/Widget.Material3.Chip.Filter"
+                    style="@style/Widget.App.Chip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
@@ -82,14 +84,14 @@
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chipFormVideo"
-                    style="@style/Widget.Material3.Chip.Filter"
+                    style="@style/Widget.App.Chip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/tipo_video" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chipFormArticulo"
-                    style="@style/Widget.Material3.Chip.Filter"
+                    style="@style/Widget.App.Chip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/tipo_articulo" />
@@ -97,7 +99,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilEnlace"
-                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                style="@style/Widget.App.TextInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
@@ -112,7 +114,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilImagen"
-                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                style="@style/Widget.App.TextInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"

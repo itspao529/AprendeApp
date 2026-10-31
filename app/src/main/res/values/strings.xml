@@ -111,5 +111,7 @@
     <string name="calificacion_enviada">¡Gracias por tu calificación!</string>
     <string name="calificacion_actualizada">Calificación actualizada</string>
 
-    <string name="login_subtitulo">Aprende a tu ritmo ✿</string>
+    <string name="login_subtitulo">Aprende a tu ritmo ♡</string>
+
+    <string name="login_logo">🌸</string>
 </resources>

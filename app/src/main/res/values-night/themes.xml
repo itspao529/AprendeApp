@@ -1,20 +1,23 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <style name="Base.Theme.RecursosDeAprendizaje" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="colorPrimary">#FFB1C8</item>
-        <item name="colorOnPrimary">#5E1133</item>
-        <item name="colorPrimaryContainer">#7B2949</item>
-        <item name="colorOnPrimaryContainer">#FFD9E3</item>
-        <item name="colorSecondary">#D8BBF5</item>
-        <item name="colorOnSecondary">#3E2358</item>
-        <item name="colorSecondaryContainer">#563A70</item>
-        <item name="colorOnSecondaryContainer">#EBDDFF</item>
-        <item name="android:colorBackground">#1F1A1C</item>
-        <item name="colorSurface">#1F1A1C</item>
-        <item name="colorSurfaceContainerLow">#2A2326</item>
-        <item name="colorSurfaceContainer">#2E2729</item>
-        <item name="colorSurfaceContainerHigh">#393134</item>
+        <item name="colorPrimary">@color/morado_pastel</item>
+        <item name="colorOnPrimary">#3A2540</item>
+        <item name="colorPrimaryContainer">@color/morado_oscuro</item>
+        <item name="colorOnPrimaryContainer">@color/rosa_pastel</item>
+        <item name="colorSecondary">@color/teal_medio</item>
+        <item name="colorOnSecondary">#0F3330</item>
+        <item name="colorSecondaryContainer">#2F5C57</item>
+        <item name="colorOnSecondaryContainer">@color/teal_pastel</item>
+        <item name="android:colorBackground">#1E1A20</item>
+        <item name="colorSurface">#1E1A20</item>
+        <item name="colorOnSurface">#F2E6EE</item>
+        <item name="colorSurfaceContainerLow">#282229</item>
+        <item name="colorSurfaceContainer">#2D262E</item>
+        <item name="colorSurfaceContainerHigh">#382F3A</item>
         <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.App.Small</item>
         <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.App.Medium</item>
         <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.App.Large</item>
+        <item name="materialButtonStyle">@style/Widget.App.Button</item>
+        <item name="textInputStyle">@style/Widget.App.TextInput</item>
     </style>
 </resources>

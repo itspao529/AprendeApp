@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/Widget.Material3.CardView.Elevated"
+    style="@style/Widget.App.Card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="16dp"
@@ -74,7 +74,7 @@
                     android:layout_height="48dp"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:contentDescription="@string/fav_descripcion"
-                    android:src="@android:drawable/btn_star_big_off" />
+                    android:src="@drawable/ic_corazon_off" />
             </LinearLayout>
 
             <LinearLayout
@@ -85,14 +85,14 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnCalificar"
-                    style="@style/Widget.Material3.Button.TonalButton"
+                    style="@style/Widget.App.Button.Tonal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/item_calificar" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnEnlace"
-                    style="@style/Widget.Material3.Button.TextButton"
+                    style="@style/Widget.App.Button.Text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"

@@ -7,16 +7,18 @@
     android:orientation="vertical">
 
     <com.google.android.material.appbar.MaterialToolbar
+        android:background="@drawable/bg_toolbar"
+        android:theme="@style/ThemeOverlay.App.Toolbar"
+        app:titleTextColor="@color/white"
+        app:subtitleTextColor="@color/white"
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        app:title="@string/app_name"
-        app:titleTextColor="?attr/colorPrimary"
-        app:subtitleTextColor="?attr/colorSecondary" />
+        android:layout_height="72dp"
+        app:title="@string/app_name" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilBuscar"
-        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        style="@style/Widget.App.TextInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
@@ -51,7 +53,7 @@
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipTodos"
-                style="@style/Widget.Material3.Chip.Filter"
+                style="@style/Widget.App.Chip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
@@ -59,28 +61,28 @@
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipLibro"
-                style="@style/Widget.Material3.Chip.Filter"
+                style="@style/Widget.App.Chip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/tipo_libro" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipVideo"
-                style="@style/Widget.Material3.Chip.Filter"
+                style="@style/Widget.App.Chip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/tipo_video" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipArticulo"
-                style="@style/Widget.Material3.Chip.Filter"
+                style="@style/Widget.App.Chip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/tipo_articulo" />
         
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipFavoritos"
-                style="@style/Widget.Material3.Chip.Filter"
+                style="@style/Widget.App.Chip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/filtro_favoritos" />
@@ -103,7 +105,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnOrden"
-            style="@style/Widget.Material3.Button.TextButton"
+            style="@style/Widget.App.Button.Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/orden_az" />

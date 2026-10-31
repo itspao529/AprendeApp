@@ -3,15 +3,35 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <!-- Paleta: rosa empolvado y lila -->
-    <color name="rosa">#B5446E</color>
-    <color name="rosa_claro">#FFD9E3</color>
-    <color name="rosa_fondo">#FFF8F9</color>
-    <color name="rosa_superficie">#FDECF0</color>
-    <color name="lila">#7E5A9B</color>
-    <color name="lila_claro">#EBDDFF</color>
+    <!-- Paleta: rosas -->
+    <color name="rosa_oscuro">#E09D9A</color>
+    <color name="rosa_medio">#F3B7B5</color>
+    <color name="rosa_pastel">#FADFDE</color>
+    <!-- Paleta: verdes azulados -->
+    <color name="teal_oscuro">#6BA39A</color>
+    <color name="teal_medio">#80C4C0</color>
+    <color name="teal_pastel">#BDE2DD</color>
+    <!-- Paleta: morados -->
+    <color name="morado_oscuro">#664A68</color>
+    <color name="morado_medio">#A58BA8</color>
+    <color name="morado_pastel">#C7B0C5</color>
 
-    <!-- Degradado del encabezado (se usa igual en modo claro y oscuro) -->
-    <color name="degradado_inicio">#B5446E</color>
-    <color name="degradado_fin">#7E5A9B</color>
+    <!-- Fondos y textos -->
+    <color name="fondo_crema">#FFF8F7</color>
+    <color name="superficie_rosa">#FDEDEC</color>
+    <color name="texto_ciruela">#3D2B40</color>
+
+    <!-- Nombres anteriores (se mantienen para no romper nada) -->
+    <color name="rosa">#E09D9A</color>
+    <color name="rosa_claro">#FADFDE</color>
+    <color name="rosa_fondo">#FFF8F7</color>
+    <color name="rosa_superficie">#FDEDEC</color>
+    <color name="lila">#A58BA8</color>
+    <color name="lila_claro">#C7B0C5</color>
+    <color name="durazno">#F3B7B5</color>
+    <color name="ciruela">#3D2B40</color>
+
+    <!-- Degradado de las barras superiores -->
+    <color name="degradado_inicio">#A58BA8</color>
+    <color name="degradado_fin">#664A68</color>
 </resources>
