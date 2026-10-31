@@ -13,7 +13,7 @@
         app:subtitleTextColor="@color/white"
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="72dp"
+        android:layout_height="96dp"
         app:title="@string/app_name" />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -22,13 +22,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:hint="@string/lista_buscar"
         app:endIconMode="clear_text"
         app:startIconDrawable="@android:drawable/ic_menu_search">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etBuscar"
+            android:textSize="16sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:imeOptions="actionSearch"
@@ -41,6 +42,7 @@
         android:layout_height="wrap_content"
         android:clipToPadding="false"
         android:paddingHorizontal="16dp"
+        android:paddingVertical="8dp"
         android:scrollbars="none">
 
         <com.google.android.material.chip.ChipGroup
@@ -54,6 +56,7 @@
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipTodos"
                 style="@style/Widget.App.Chip"
+                android:textSize="15sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
@@ -62,6 +65,7 @@
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipLibro"
                 style="@style/Widget.App.Chip"
+                android:textSize="15sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/tipo_libro" />
@@ -69,6 +73,7 @@
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipVideo"
                 style="@style/Widget.App.Chip"
+                android:textSize="15sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/tipo_video" />
@@ -76,6 +81,7 @@
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipArticulo"
                 style="@style/Widget.App.Chip"
+                android:textSize="15sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/tipo_articulo" />
@@ -83,6 +89,7 @@
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipFavoritos"
                 style="@style/Widget.App.Chip"
+                android:textSize="15sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/filtro_favoritos" />

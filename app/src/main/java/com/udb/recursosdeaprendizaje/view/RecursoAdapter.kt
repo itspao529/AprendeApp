@@ -42,7 +42,7 @@ class RecursoAdapter(
         with(holder.b) {
             tvTitulo.text = r.titulo
             tvDescripcion.text = r.descripcion
-            tvTipo.text = ctx.getString(R.string.item_tipo, tipoTexto)
+            tvTipo.text = tipoTexto
             tvId.text = ctx.getString(R.string.item_id, r.id ?: "-")
             tvRating.text =
                 if (r.ratingCantidad == 0) ctx.getString(R.string.item_sin_calificar)
