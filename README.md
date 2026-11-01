@@ -64,3 +64,7 @@ Recursos: `recursos` y `usuarios`.
 ## Autora
 
 Paola Castillo
+
+## Instalación rápida (APK)
+
+Descarga la APK desde la carpeta `apk/` o desde la sección **Releases** del repositorio e instálala en un dispositivo Android (hay que permitir la instalación de orígenes desconocidos).
