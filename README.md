@@ -1,7 +1,10 @@
 # AprendeApp
 
 Aplicación Android (Kotlin) para gestionar recursos de aprendizaje de Ingeniería de Sistemas: libros, videos y artículos. Proyecto del curso Desarrollo de Software para Móviles, Universidad Don Bosco (Tercer Desafío Práctico).
+##Video
 
+
+**https://youtu.be/07sBknbq6qk**
 ## Funcionalidades
 
 - **Registro y login** con validación de contraseña (mínimo 12 caracteres, mayúscula, minúscula, número y carácter especial `!@#$%^&*`). La contraseña se guarda como hash SHA-256, nunca en texto plano.
@@ -68,3 +71,6 @@ Paola Castillo
 ## Instalación rápida (APK)
 
 Descarga la APK desde la carpeta `apk/` o desde la sección **Releases** del repositorio e instálala en un dispositivo Android (hay que permitir la instalación de orígenes desconocidos).
+
+
+Video
